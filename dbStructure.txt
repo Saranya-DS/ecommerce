@@ -1,0 +1,44 @@
+-- Table: public.users1
+
+-- DROP TABLE public.users1;
+
+CREATE TABLE public.users
+(
+    user_id integer NOT NULL DEFAULT nextval('users1_user_id_seq'::regclass),
+    user_name character varying(64) COLLATE pg_catalog."default",
+    password character varying(64) COLLATE pg_catalog."default",
+    email character varying(64) COLLATE pg_catalog."default",
+    CONSTRAINT users1_pkey PRIMARY KEY (user_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.users1
+    OWNER to postgres;
+  ============================================================================================
+-- Table: public.products
+
+-- DROP TABLE public.products;
+
+CREATE TABLE public.products
+(
+    product_id integer NOT NULL DEFAULT nextval('products_product_id_seq'::regclass),
+    product_code character varying(64) COLLATE pg_catalog."default",
+    product_name character varying(64) COLLATE pg_catalog."default",
+    product_desc character varying(128) COLLATE pg_catalog."default",
+    product_price numeric(10,2),
+    no_of_stocks numeric(4,0),
+    CONSTRAINT products_pkey PRIMARY KEY (product_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.products
+    OWNER to postgres;
+ ============================================================================================
+  
+

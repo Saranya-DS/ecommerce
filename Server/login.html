@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta name="google-signin-client_id" content="216185315806-rgc72d89l07cnqeug94lrbthmdrv7kbf.apps.googleusercontent.com">
+    <link rel="stylesheet" type="text/css" href="../client/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../client/stylesheets/bootstrap-theme.css">
+</head>
+
+<body style="background: #253137">
+
+    <div class="container" style "float:left;">
+        <form style="width: 257px;margin: 0 auto;padding-top:200px;">
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="txtUserName" placeholder="User name">
+                    </textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="txtPassword" placeholder="password">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button id="btnLogin" type="button" style="width:100%" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+
+           
+        </form>
+    </div>
+
+
+    <script type="text/javascript" src="../client/js/libs/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../client/js/libs/bootstrap.min.js"></script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript">
+        var email = null;
+        $('#btnLogin').click(function () {
+            var loginData = {
+                username: $('#txtUserName').val(),
+                password: $('#txtPassword').val()
+            }
+            login(loginData);
+        });
+        function login(loginData) {
+
+            $.ajax({
+                url: '/login',
+                method: 'POST',
+                data: loginData,
+                success: function (response) {
+                    if (response && response.status == 'Login Success') {
+                        window.userID = response.response && response.response.length ? response.response[0].user_id : 0;
+                        document.cookie = "userid=" + window.userID;
+                        location.href = '/products';
+                    } else {
+                        alert(response.status);
+                        $('#txtUserName').val('').focus();
+                        $('#txtPassword').val('');
+                    }
+                },
+                error: function () {
+
+                }
+            });
+
+        }
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            email = profile.getEmail();
+            if (email) {
+                login({ email: email, name: profile.getName() }, true);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../client/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../client/stylesheets/stylesheet.css">
+</head>
+<body>
+
+<div id="divHeader" style="background:grey;color:white;text-align:center;font-size:22px;padding:10px">
+    <div class="container" style="margin:0;width:100%">
+        <div class="menuDiv">
+            <div id="divMenuBookCatalogue" class="menu">
+                <div>Books Catalogue</div>
+            </div>
+            <div id="divMenuBooks" class="menu">
+                <div>My Collections</div>
+            </div>
+            <div id="divMenuOtherUserBooks" class="menu">
+                <div>Other User Books</div>
+            </div>
+            <div id="divMenuAddNewBooks" class="menu">
+                <div>Add New Books</div>
+            </div>
+        </div>
+        <div style="float:right;">
+            <span id="logout" class="glyphicon glyphicon-log-out"></span>
+        </div>
+    </div>
+</div>
+<div id="body-content">
+        <div class="bodyMenu" id="divBooksCatalogue">
+            <div class="form-group row">
+                <div class="col-lg-12" style="padding:17px;">
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control bookTitle" id="txtSearchBookTitle" placeholder="Enter Book Title">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control bookISBN" id="txtSearchBookISBN" placeholder="Enter ISBN">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="button" class="btn btn-primary" id="btnSearchCatalogueBooks" value="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Book Title</th>
+                                    <th>ISBN</th>
+                                    <th>Publisher</th>
+                                    <th>Publisher Data</th>
+                                    <th>Author Name</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblBooksAll">
+            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodyMenu" id="divMyBooks" style="display:none;">
+            <div class="form-group row">
+                <div class="col-lg-12" style="padding:17px;">
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control bookTitle" id="txtSearchBookTitle" placeholder="Enter Book Title">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control bookISBN" id="txtSearchBookISBN" placeholder="Enter ISBN">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="button" class="btn btn-primary" id="btnSearchMyBooks" value="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Book Title</th>
+                                    <th>ISBN</th>
+                                    <th>Publisher</th>
+                                    <th>Publisher Data</th>
+                                    <th>Author Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblBooksPersonal">
+            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodyMenu" id="divOtherUserBooks" style="display:none;">
+            <div class="form-group row">
+                <div class="col-lg-12" style="padding:17px;">
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control bookTitle" id="txtSearchBookTitle" placeholder="Enter Book Title">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control bookISBN" id="txtSearchBookISBN" placeholder="Enter ISBN">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="button" class="btn btn-primary" id="btnSearchOtherBooks" value="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Book Title</th>
+                                    <th>ISBN</th>
+                                    <th>Publisher</th>
+                                    <th>Publisher Data</th>
+                                    <th>Author Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblBooksOthers">
+            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodyMenu" id="divAddNewBooks" style="display:none;">
+            <div class="container" style="margin-top:10px;float:left;">
+                <form>
+                    <div class="form-group row">
+                        <label for="ddlSelectCollection" class="col-sm-2 col-form-label">Collection Type</label>
+        
+                        <div class="col-sm-10">
+                            <select class="form-control" id="ddlSelectCollection">
+                                <option value="normal">Normal Category</option>
+                                <option value="personal">Personal Category</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtBookTitle" class="col-sm-2 col-form-label">Book Title</label>
+        
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtBookTitle"
+                                   placeholder="Enter the book title"></input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtISBN" class="col-sm-2 col-form-label">ISBN Number</label>
+        
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtISBN"
+                                   placeholder="Enter the isbn number"></input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtPublisherName" class="col-sm-2 col-form-label">Publisher Name</label>
+        
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtPublisherName"
+                                   placeholder="Enter the publisher name"></input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtDatePublished" class="col-sm-2 col-form-label">Published Date</label>
+        
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="txtDatePublished"></input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtAuthorName" class="col-sm-2 col-form-label">Author Name</label>
+        
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtAuthorName"
+                                   placeholder="Enter the author name"></input>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label for="btnAddNewBook" class="col-sm-2 col-form-label"></label>
+        
+                        <div class="col-sm-10">
+                            <button id="btnAddNewBook" type="button" class="btn btn-primary">ADD</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
+
+<script type="text/javascript" src="../client/js/libs/jquery.min.js"></script>
+
+<script type="text/javascript" src="../client/js/libs/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../node_modules/moment/moment.js"></script>
+
+
+
+<script type="text/javascript" src="../client/js/books.js"></script>
+</body>
+</html>
+
